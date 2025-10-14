@@ -176,7 +176,7 @@ const AddsOnComposer = () => {
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
       <div className="max-w-7xl mx-auto p-6">
         <div className="text-center mb-12 pt-8">
-          <h1 className="text-5xl font-bold text-gray-900 mb-3">Compositeur de Programmes</h1>
+          <h1 className="text-5xl font-bold text-gray-900 mb-3">Compositeur de Programmes Add-ons</h1>
           <p className="text-xl text-gray-600">Expériences modulaires d'apprentissage sur mesure</p>
         </div>
 
