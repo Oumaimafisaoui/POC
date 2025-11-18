@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Clock, CheckCircle, Circle, Briefcase, Target, Award, Book, Users, UserCheck, AlertCircle } from 'lucide-react';
+import { Clock, CheckCircle, Circle, Briefcase, Target, Award, Book, Users, UserCheck, AlertCircle, Info } from 'lucide-react';
 
 const AddsOnComposer = () => {
   const [activeProgram, setActiveProgram] = useState('java-piscine');
@@ -9,6 +9,7 @@ const AddsOnComposer = () => {
     'ai-starter': { duration: '2-weeks', participants: '15' }
   });
   const [selectedModules, setSelectedModules] = useState(new Set());
+  const [hoveredTooltip, setHoveredTooltip] = useState(null);
 
   const programs = {
     'java-piscine': {
@@ -25,8 +26,7 @@ const AddsOnComposer = () => {
       description: "Intensive Full Stack Java development training. Complete track covering Java SE/EE, Spring Boot, REST APIs, Angular for frontend, databases, and continuous integration. Program designed to train Full Stack Java developers capable of designing and deploying complete web applications, from backend to frontend.",
       resources: {
         experts: [
-          { role: 'Java/Spring Boot Expert', count: 1, description: 'Software architect with 8+ years of experience' },
-          { role: 'Angular Frontend Expert', count: 1, description: 'Senior developer specialized in JS frameworks' }
+          { role: 'Java/Spring Boot Expert', count: 1, description: 'Software architect with 8+ years of experience' }
         ],
         mentors: { count: 2, ratio: '1 mentor for 10 learners' },
         staff: [
@@ -59,8 +59,7 @@ const AddsOnComposer = () => {
       description: "Complete DevOps engineering training covering infrastructure automation, CI/CD pipelines, containerization and monitoring practices. Track designed to develop essential technical skills for joining professional DevOps teams.",
       resources: {
         experts: [
-          { role: 'DevOps/SRE Expert', count: 1, description: 'Cloud engineer with production experience' },
-          { role: 'Infrastructure Expert', count: 1, description: 'Certified cloud architect (AWS/Azure/GCP)' }
+          { role: 'DevOps/SRE Expert', count: 1, description: 'Cloud engineer with production experience' }
         ],
         mentors: { count: 2, ratio: '1 mentor for 10 learners' },
         staff: [
@@ -275,11 +274,26 @@ const AddsOnComposer = () => {
               </div>
               
               <div className="space-y-6">
-                <div>
-                  <h4 className="font-semibold text-gray-900 mb-3 flex items-center">
+                <div className="relative">
+                  <div 
+                    className="flex items-center mb-3"
+                    onMouseEnter={() => setHoveredTooltip('experts')}
+                    onMouseLeave={() => setHoveredTooltip(null)}
+                  >
                     <Award className="w-5 h-5 text-blue-600 mr-2" />
-                    Required experts
-                  </h4>
+                    <h4 className="font-semibold text-gray-900">Required experts</h4>
+                    <div className="ml-2 p-1 rounded-full bg-blue-100 hover:bg-blue-200 transition-colors cursor-help">
+                      <Info className="w-3.5 h-3.5 text-blue-600" />
+                    </div>
+                  </div>
+                  
+                  {hoveredTooltip === 'experts' && (
+                    <div className="absolute top-0 left-0 right-0 -mt-16 bg-gradient-to-r from-blue-600 to-blue-500 text-white text-sm rounded-xl py-3 px-4 z-10 shadow-xl border border-blue-400">
+                      <div className="font-medium">These are the experts mobilized by the client</div>
+                      <div className="absolute bottom-0 left-8 transform translate-y-1/2 rotate-45 w-3 h-3 bg-blue-600 border-r border-b border-blue-400"></div>
+                    </div>
+                  )}
+                  
                   <div className="space-y-2">
                     {prog.resources.experts.map((expert, i) => (
                       <div key={i} className="flex items-start p-3 bg-blue-50 rounded-lg border border-blue-100">
@@ -293,11 +307,26 @@ const AddsOnComposer = () => {
                   </div>
                 </div>
 
-                <div>
-                  <h4 className="font-semibold text-gray-900 mb-3 flex items-center">
+                <div className="relative">
+                  <div 
+                    className="flex items-center mb-3"
+                    onMouseEnter={() => setHoveredTooltip('mentors')}
+                    onMouseLeave={() => setHoveredTooltip(null)}
+                  >
                     <UserCheck className="w-5 h-5 text-emerald-600 mr-2" />
-                    Mentors
-                  </h4>
+                    <h4 className="font-semibold text-gray-900">Mentors</h4>
+                    <div className="ml-2 p-1 rounded-full bg-emerald-100 hover:bg-emerald-200 transition-colors cursor-help">
+                      <Info className="w-3.5 h-3.5 text-emerald-600" />
+                    </div>
+                  </div>
+                  
+                  {hoveredTooltip === 'mentors' && (
+                    <div className="absolute top-0 left-0 right-0 -mt-16 bg-gradient-to-r from-emerald-600 to-emerald-500 text-white text-sm rounded-xl py-3 px-4 z-10 shadow-xl border border-emerald-400">
+                      <div className="font-medium">Staff who assist and guide learners throughout the experience</div>
+                      <div className="absolute bottom-0 left-8 transform translate-y-1/2 rotate-45 w-3 h-3 bg-emerald-600 border-r border-b border-emerald-400"></div>
+                    </div>
+                  )}
+                  
                   <div className="p-4 bg-emerald-50 rounded-lg border border-emerald-100">
                     <div className="flex justify-between items-center">
                       <span className="font-medium text-gray-900">Mentors</span>
@@ -306,11 +335,26 @@ const AddsOnComposer = () => {
                   </div>
                 </div>
 
-                <div>
-                  <h4 className="font-semibold text-gray-900 mb-3 flex items-center">
+                <div className="relative">
+                  <div 
+                    className="flex items-center mb-3"
+                    onMouseEnter={() => setHoveredTooltip('staff')}
+                    onMouseLeave={() => setHoveredTooltip(null)}
+                  >
                     <Briefcase className="w-5 h-5 text-purple-600 mr-2" />
-                    Support staff
-                  </h4>
+                    <h4 className="font-semibold text-gray-900">Support staff</h4>
+                    <div className="ml-2 p-1 rounded-full bg-purple-100 hover:bg-purple-200 transition-colors cursor-help">
+                      <Info className="w-3.5 h-3.5 text-purple-600" />
+                    </div>
+                  </div>
+                  
+                  {hoveredTooltip === 'staff' && (
+                    <div className="absolute top-0 left-0 right-0 -mt-16 bg-gradient-to-r from-purple-600 to-purple-500 text-white text-sm rounded-xl py-3 px-4 z-10 shadow-xl border border-purple-400">
+                      <div className="font-medium">Resources mobilized by 01Edu for support</div>
+                      <div className="absolute bottom-0 left-8 transform translate-y-1/2 rotate-45 w-3 h-3 bg-purple-600 border-r border-b border-purple-400"></div>
+                    </div>
+                  )}
+                  
                   <div className="space-y-2">
                     {prog.resources.staff.map((member, i) => (
                       <div key={i} className="flex items-center justify-between p-3 bg-purple-50 rounded-lg border border-purple-100">
