@@ -349,8 +349,9 @@ const AddsOnComposer = () => {
                   </div>
                   
                   {hoveredTooltip === 'staff' && (
-                    <div className="absolute top-0 left-0 right-0 -mt-16 bg-gradient-to-r from-purple-600 to-purple-500 text-white text-sm rounded-xl py-3 px-4 z-10 shadow-xl border border-purple-400">
+                    <div className="absolute top-0 left-0 right-0 -mt-20 bg-gradient-to-r from-purple-600 to-purple-500 text-white text-sm rounded-xl py-3 px-4 z-10 shadow-xl border border-purple-400">
                       <div className="font-medium">Resources mobilized by 01Edu for support</div>
+                      <div className="text-xs mt-1 opacity-90">(Optional - Available upon request with applicable conditions)</div>
                       <div className="absolute bottom-0 left-8 transform translate-y-1/2 rotate-45 w-3 h-3 bg-purple-600 border-r border-b border-purple-400"></div>
                     </div>
                   )}
@@ -537,7 +538,7 @@ const AddsOnComposer = () => {
                 <div className="flex gap-3">
                   <button className="bg-white text-gray-900 px-8 py-3 rounded-xl font-semibold hover:shadow-lg transition-all flex items-center">
                     <Briefcase className="w-4 h-4 mr-2" />
-                    Request a quote
+                    Request Information
                   </button>
                 </div>
               </div>
