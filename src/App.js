@@ -4,9 +4,9 @@ import { Clock, CheckCircle, Circle, Briefcase, Target, Award, Book, Users, User
 const AddsOnComposer = () => {
   const [activeProgram, setActiveProgram] = useState('java-piscine');
   const [configs, setConfigs] = useState({
-    'java-piscine': { objective: 'fullstack', duration: '4-months', level: 'beginner', participants: '15' },
-    devops: { objective: 'career-change', job: 'devops', profession: 'devops-engineer', duration: '6-months', level: 'beginner', participants: '15' },
-    'ai-starter': { duration: '2-weeks', participants: '15' }
+    'java-piscine': { objective: 'career-change', job: 'fullstack', duration: '4-months', level: 'beginner', participants: '15' },
+    devops: { objective: 'career-change', job: 'devops', duration: '6-months', level: 'beginner', participants: '15' },
+    'ai-starter': { objective: 'career-change', duration: '2-weeks', participants: '15' }
   });
   const [selectedModules, setSelectedModules] = useState(new Set());
   const [hoveredTooltip, setHoveredTooltip] = useState(null);
@@ -79,13 +79,13 @@ const AddsOnComposer = () => {
       ]
     },
     'ai-starter': {
-      name: 'AI Starter Bootcamp',
+      name: 'AI Starter',
       color: 'purple',
       objectives: ['Coding with AI', 'Human-AI collaboration', 'Web applications'],
       softSkills: ['Collaboration', 'Communication', 'Creative problem solving', 'Adaptability', 'Self-directed learning'],
       hardSkills: ['HTML/CSS', 'JavaScript', 'DOM Manipulation', 'API Integration', 'Web development', 'AI tools usage'],
       prerequisites: ['No technical prerequisites'],
-      description: "Intensive bootcamp introducing web development with artificial intelligence assistance. Peer-to-peer program focused on collaborative learning between humans and AI to develop coding skills and creative problem solving.",
+      description: "Intensive piscine introducing web development with artificial intelligence assistance. Peer-to-peer program focused on collaborative learning between humans and AI to develop coding skills and creative problem solving.",
       resources: {
         experts: [
           { role: 'Web & AI Expert', count: 1, description: 'Web developer with AI tools expertise (Optional)' }
@@ -397,8 +397,15 @@ const AddsOnComposer = () => {
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-2">Objective</label>
                     <select value={cfg.objective} onChange={(e) => updateConfig('objective', e.target.value)} className="w-full p-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:outline-none">
+                      <option value="career-change">Career Change</option>
+                      <option value="upskilling">Upskilling</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">Job</label>
+                    <select value={cfg.job} onChange={(e) => updateConfig('job', e.target.value)} className="w-full p-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:outline-none">
                       <option value="fullstack">Full Stack Java</option>
-                      <option value="backend-dev">Specialized Backend</option>
+                      <option value="backend">Specialized Backend</option>
                       <option value="microservices">Microservices Architecture</option>
                     </select>
                   </div>
@@ -430,7 +437,7 @@ const AddsOnComposer = () => {
                     <label className="block text-sm font-semibold text-gray-700 mb-2">Objective</label>
                     <select value={cfg.objective} onChange={(e) => updateConfig('objective', e.target.value)} className="w-full p-3 border-2 border-gray-200 rounded-xl focus:border-emerald-500 focus:outline-none">
                       <option value="career-change">Career Change</option>
-                      <option value="skills">Skills</option>
+                      <option value="upskilling">Upskilling</option>
                     </select>
                   </div>
                   <div>
@@ -465,6 +472,13 @@ const AddsOnComposer = () => {
               )}
               {activeProgram === 'ai-starter' && (
                 <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">Objective</label>
+                    <select value={cfg.objective} onChange={(e) => updateConfig('objective', e.target.value)} className="w-full p-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:outline-none">
+                      <option value="career-change">Career Change</option>
+                      <option value="upskilling">Upskilling</option>
+                    </select>
+                  </div>
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-2">Duration</label>
                     <select value={cfg.duration} onChange={(e) => { updateConfig('duration', e.target.value); setSelectedModules(new Set()); }} className="w-full p-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:outline-none">
