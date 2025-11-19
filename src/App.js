@@ -93,7 +93,7 @@ const AddsOnComposer = () => {
         mentors: { count: 3, ratio: '1 mentor for 10 learners' },
         staff: [
           { role: 'Educational coordinator', count: 1 },
-          { role: 'Peer-learning facilitator', count: 1 }
+          { role: 'Technical support', count: 1 }
         ]
       },
       modules: [
@@ -410,7 +410,7 @@ const AddsOnComposer = () => {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">Level</label>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">Starting Level</label>
                     <select value={cfg.level} onChange={(e) => updateConfig('level', e.target.value)} className="w-full p-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:outline-none">
                       <option value="beginner">Beginner</option>
                       <option value="intermediate">Intermediate</option>
@@ -449,7 +449,7 @@ const AddsOnComposer = () => {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">Level</label>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">Starting Level</label>
                     <select value={cfg.level} onChange={(e) => updateConfig('level', e.target.value)} className="w-full p-3 border-2 border-gray-200 rounded-xl focus:border-emerald-500 focus:outline-none">
                       <option value="beginner">Beginner</option>
                       <option value="intermediate">Intermediate</option>
@@ -472,13 +472,6 @@ const AddsOnComposer = () => {
               )}
               {activeProgram === 'ai-starter' && (
                 <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">Objective</label>
-                    <select value={cfg.objective} onChange={(e) => updateConfig('objective', e.target.value)} className="w-full p-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:outline-none">
-                      <option value="career-change">Career Change</option>
-                      <option value="upskilling">Upskilling</option>
-                    </select>
-                  </div>
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-2">Duration</label>
                     <select value={cfg.duration} onChange={(e) => { updateConfig('duration', e.target.value); setSelectedModules(new Set()); }} className="w-full p-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:outline-none">
